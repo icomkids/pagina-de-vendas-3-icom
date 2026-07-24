@@ -884,9 +884,33 @@
   const WHATSAPP_NUMBER = "551231996370"; // iCom Motors
   const WHATSAPP_MSG = "Olá! Vim pela página e quero conhecer o estoque da iCom Motors.";
   const waLink = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(WHATSAPP_MSG);
-  ["waHeader","waHero","waFinal","waSticky","waLojas","waBar"].forEach(id=>{
+  // ===== eventos de conversao (Meta Pixel + Google Ads) =====
+  function trackConversao(tipo){
+    try{
+      if(typeof fbq === 'function'){
+        if(tipo === 'simulacao'){ fbq('track','Lead'); fbq('trackCustom','SimulacaoFinanciamento'); }
+        else { fbq('track','Contact'); }
+      }
+    }catch(e){}
+    try{
+      if(typeof gtag === 'function'){
+        // Conversao Google Ads (mesmo rotulo usado na pagina de avaliacao)
+        gtag('event','conversion',{
+          'send_to':'AW-18306162351/Kl2LCKHQuMwcEK-9h5lE',
+          'value':1.0,
+          'currency':'BRL'
+        });
+        gtag('event', tipo === 'simulacao' ? 'simulacao_financiamento' : 'contato_whatsapp');
+      }
+    }catch(e){}
+  }
+
+  ["waHeader","waHero","waFinal","waSticky","waLojas","waBar","simWa"].forEach(id=>{
     const el = document.getElementById(id);
-    if(el) el.href = waLink;
+    if(el){
+      if(id !== 'simWa') el.href = waLink; // simWa tem link proprio (dados da simulacao)
+      el.addEventListener('click', ()=>trackConversao('whatsapp'));
+    }
   });
 
   // fail-safe: garante que nenhum conteudo com animacao de entrada fique
@@ -1011,6 +1035,9 @@
         '💰 Total: ' + brl(total) + '%0A%0A' +
         'Quero uma análise personalizada e aprovação.';
       $('simWa').href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + msg;
+
+      // dispara conversao: simulacao concluida (lead qualificado)
+      trackConversao('simulacao');
 
       // rola pro resultado no mobile
       if(window.innerWidth <= 880){
