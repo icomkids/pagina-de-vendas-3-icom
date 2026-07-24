@@ -503,6 +503,7 @@
   :focus-visible{ outline:2px solid var(--blue); outline-offset:3px; }
   @media (prefers-reduced-motion: reduce){
     *{ animation:none !important; transition:none !important; }
+    .reveal{ opacity:1 !important; transform:none !important; }
   }
 </style>
 </head>
@@ -867,6 +868,17 @@
   ["waHeader","waHero","waFinal","waSticky","waLojas","waBar"].forEach(id=>{
     const el = document.getElementById(id);
     if(el) el.href = waLink;
+  });
+
+  // fail-safe: garante que nenhum conteudo com animacao de entrada fique
+  // preso invisivel (ex: navegador com "reduzir animacoes" ligado)
+  window.addEventListener('load', ()=>{
+    setTimeout(()=>{
+      document.querySelectorAll('.reveal').forEach(el=>{
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    }, 900);
   });
 
   // odometer count-up genérico
