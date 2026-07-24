@@ -382,6 +382,46 @@
     .stores-grid{ grid-template-columns:1fr; }
     .store-photo{ max-height:220px; }
     .header-inner .btn-header span{ display:none; }
+    .hero{ padding:60px 0 44px; }
+  }
+
+  @media (max-width: 600px){
+    .wrap{ padding:0 16px; }
+    .header-inner{ padding:12px 16px; }
+    .logo img{ height:34px; width:34px; }
+    .logo span{ font-size:17px; }
+    .btn-primary{ padding:12px 18px; font-size:14px; }
+    .btn-header{ padding:9px 14px; }
+    section{ padding:48px 0; }
+    .hero{ padding:40px 0 32px; }
+    .hero-grid{ gap:32px; }
+    .hero p.sub{ font-size:16px; margin-bottom:24px; max-width:100%; }
+    .hero-ctas{ flex-direction:column; align-items:stretch; gap:12px; }
+    .hero-ctas .btn-primary{ width:100%; justify-content:center; }
+    .hero-note{ text-align:center; }
+    .diff-grid{ grid-template-columns:1fr 1fr; gap:12px; }
+    .diff-card{ padding:20px 16px; }
+    .diff-card h3{ font-size:18px; }
+    .odo-card{ padding:22px 18px; }
+    .odo-digit{ width:44px; height:60px; font-size:32px; }
+    .odo-plus{ width:32px; height:60px; font-size:24px; }
+    .odo-digit-sm{ width:38px; height:50px; font-size:24px; }
+    .odo-plus-sm{ width:28px; height:50px; font-size:20px; }
+    .section-head{ margin-bottom:32px; }
+    .section-head p{ font-size:15px; }
+    .final-cta{ padding:36px 20px; }
+    .final-cta p{ font-size:15.5px; }
+    .sticky-wa{ right:16px; bottom:16px; width:54px; height:54px; }
+    .sticky-wa svg{ width:27px; height:27px; }
+  }
+
+  @media (max-width: 400px){
+    .wrap{ padding:0 14px; }
+    .diff-grid{ grid-template-columns:1fr; }
+    .odo-digit{ width:40px; height:54px; font-size:28px; }
+    .odo-plus{ width:28px; height:54px; font-size:22px; }
+    .sticky-wa{ width:50px; height:50px; }
+    .sticky-wa svg{ width:25px; height:25px; }
   }
 
   :focus-visible{ outline:2px solid var(--blue); outline-offset:3px; }
