@@ -489,34 +489,74 @@
     .logo span{ font-size:17px; }
     .btn-primary{ padding:12px 18px; font-size:14px; }
     .btn-header{ padding:9px 14px; }
-    section{ padding:48px 0; }
-    .hero{ padding:40px 0 32px; }
-    .hero-grid{ gap:32px; }
-    .hero p.sub{ font-size:16px; margin-bottom:24px; max-width:100%; }
+    .eyebrow{ font-size:11px; letter-spacing:2px; }
+    section{ padding:44px 0; }
+
+    /* hero */
+    .hero{ padding:36px 0 30px; }
+    .hero h1{ font-size:clamp(32px,8.6vw,44px); max-width:100%; }
+    .hero-grid{ gap:28px; }
+    .hero p.sub{ font-size:16px; margin-bottom:22px; max-width:100%; }
     .hero-ctas{ flex-direction:column; align-items:stretch; gap:12px; }
     .hero-ctas .btn-primary{ width:100%; justify-content:center; }
     .hero-note{ text-align:center; }
-    .diff-grid{ grid-template-columns:1fr 1fr; gap:12px; }
-    .diff-card{ padding:20px 16px; }
-    .diff-card h3{ font-size:18px; }
+    .hero-right{ gap:18px; }
+
+    /* odometro */
     .odo-card{ padding:22px 18px; }
     .odo-digit{ width:44px; height:60px; font-size:32px; }
     .odo-plus{ width:32px; height:60px; font-size:24px; }
     .odo-digit-sm{ width:38px; height:50px; font-size:24px; }
     .odo-plus-sm{ width:28px; height:50px; font-size:20px; }
-    .section-head{ margin-bottom:32px; }
+
+    /* titulos de secao */
+    .section-head{ margin-bottom:30px; }
+    .section-head h2{ font-size:clamp(26px,7.5vw,34px); }
     .section-head p{ font-size:15px; }
+
+    /* diferenciais */
+    .diff-grid{ grid-template-columns:1fr 1fr; gap:12px; }
+    .diff-card{ padding:18px 15px; }
+    .diff-card h3{ font-size:17px; }
+    .diff-card p{ font-size:13.5px; }
+    .diff-icon{ width:40px; height:40px; }
+
+    /* depoimentos */
+    .reviews-strip{ flex-wrap:wrap; margin-bottom:26px; }
+    .review-card{ padding:20px; }
+    .review-shot{ max-height:none; }
+
+    /* como funciona */
+    .step-card h3{ font-size:21px; }
+    .step-card p{ font-size:14.5px; }
+
+    /* lojas */
+    .store-card{ padding:16px; gap:12px; }
+    .store-photo{ max-height:200px; }
+
+    /* faq */
+    .faq-q{ padding:16px; font-size:15px; }
+    .faq-a{ padding:0 16px; font-size:14px; }
+    .faq-item.open .faq-a{ padding-bottom:16px; }
+
+    /* final cta */
     .final-cta{ padding:36px 20px; }
+    .final-cta h2{ font-size:clamp(26px,7.5vw,34px); }
     .final-cta p{ font-size:15.5px; }
+
+    /* whatsapp flutuante */
     .sticky-wa{ right:16px; bottom:16px; width:54px; height:54px; }
     .sticky-wa svg{ width:27px; height:27px; }
   }
 
   @media (max-width: 400px){
     .wrap{ padding:0 14px; }
+    .hero h1{ font-size:30px; }
     .diff-grid{ grid-template-columns:1fr; }
     .odo-digit{ width:40px; height:54px; font-size:28px; }
     .odo-plus{ width:28px; height:54px; font-size:22px; }
+    .sim-tab{ font-size:15px; padding:10px 0; }
+    .sim-out .val{ font-size:clamp(46px,15vw,58px); }
     .sticky-wa{ width:50px; height:50px; }
     .sticky-wa svg{ width:25px; height:25px; }
   }
