@@ -988,7 +988,7 @@
       track.style.transform = 'translateX(-' + (idx*100) + '%)';
       dots.forEach((d,i)=> d.classList.toggle('active', i===idx));
     }
-    function restart(){ clearInterval(timer); timer = setInterval(()=>go(idx+1), 4500); }
+    function restart(){ clearInterval(timer); timer = setInterval(()=>go(idx+1), 4000); }
     const nextBtn = document.getElementById('hcNext');
     const prevBtn = document.getElementById('hcPrev');
     if(nextBtn) nextBtn.addEventListener('click', ()=>{ go(idx+1); restart(); });
