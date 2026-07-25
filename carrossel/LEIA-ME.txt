@@ -1,0 +1,5 @@
+Coloque aqui as 3 imagens do carrossel do hero, com estes nomes EXATOS:
+  1.jpg  -> arte "Financiamento Facilitado"
+  2.jpg  -> arte "Hatchs e Sedans Econômicos"
+  3.jpg  -> arte "SUVs Sem Entrada e Baixo KM"
+Formato: JPG (ou troque a extensao no index.html). Proporcao ideal 4:5 (retrato).

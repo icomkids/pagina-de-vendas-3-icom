@@ -387,6 +387,26 @@
     100%{ box-shadow:0 0 0 0 rgba(37,211,102,0); }
   }
 
+  /* ===== carrossel de ofertas (hero) ===== */
+  .hero-right{ display:flex; flex-direction:column; gap:22px; }
+  .hero-carousel{ position:relative; }
+  .hc-viewport{ overflow:hidden; border-radius:18px; border:1px solid var(--line); box-shadow:0 24px 48px -28px rgba(18,21,26,0.28); background:var(--surface-2); }
+  .hc-track{ display:flex; transition:transform .5s cubic-bezier(.22,.61,.36,1); }
+  .hc-slide{ min-width:100%; display:block; }
+  .hc-slide img{ width:100%; height:auto; display:block; aspect-ratio:4/5; object-fit:cover; background:var(--surface-2); }
+  .hc-arrow{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:3;
+    width:38px; height:38px; border-radius:50%; border:none; cursor:pointer;
+    background:rgba(18,21,26,0.55); color:#fff; font-size:24px; line-height:0;
+    display:flex; align-items:center; justify-content:center; padding-bottom:3px;
+    transition:background .15s ease;
+  }
+  .hc-arrow:hover{ background:rgba(18,21,26,0.82); }
+  .hc-prev{ left:10px; } .hc-next{ right:10px; }
+  .hc-dots{ display:flex; justify-content:center; gap:8px; margin-top:12px; }
+  .hc-dot{ width:9px; height:9px; border-radius:50%; border:none; cursor:pointer; background:var(--line); padding:0; transition:background .15s ease, transform .15s ease; }
+  .hc-dot.active{ background:var(--blue); transform:scale(1.25); }
+
   /* ===== simulador de financiamento ===== */
   .sim-shell{
     background:var(--surface); border:1px solid var(--line); border-radius:22px;
@@ -557,7 +577,22 @@
       </div>
     </div>
 
-    <div class="odo-card reveal d4">
+    <div class="hero-right reveal d4">
+      <!-- Carrossel de ofertas -->
+      <div class="hero-carousel" aria-label="Ofertas iCom Motors">
+        <div class="hc-viewport">
+          <div class="hc-track" id="hcTrack">
+            <a class="hc-slide" id="hcSlide1" href="#" target="_blank" rel="noopener"><img src="carrossel/1.jpg" alt="Financiamento facilitado — iCom Motors" loading="lazy"></a>
+            <a class="hc-slide" id="hcSlide2" href="#" target="_blank" rel="noopener"><img src="carrossel/2.jpg" alt="Hatchs e sedans economicos — iCom Motors" loading="lazy"></a>
+            <a class="hc-slide" id="hcSlide3" href="#" target="_blank" rel="noopener"><img src="carrossel/3.jpg" alt="SUVs sem entrada e baixo km — iCom Motors" loading="lazy"></a>
+          </div>
+        </div>
+        <button class="hc-arrow hc-prev" id="hcPrev" type="button" aria-label="Anterior">&#8249;</button>
+        <button class="hc-arrow hc-next" id="hcNext" type="button" aria-label="Proximo">&#8250;</button>
+        <div class="hc-dots" id="hcDots"></div>
+      </div>
+
+      <div class="odo-card">
       <div class="odo-label">CARROS DISPONÍVEIS AGORA</div>
       <div class="odo-digits">
         <div class="odo-digit" id="d1">0</div>
@@ -584,6 +619,7 @@
         <span class="odo-tag">PICAPE</span>
         <span class="odo-tag">GARANTIA</span>
       </div>
+    </div>
     </div>
   </div>
 </section>
@@ -923,6 +959,42 @@
       });
     }, 900);
   });
+
+  // ===== carrossel de ofertas do hero =====
+  (function(){
+    const track = document.getElementById('hcTrack');
+    if(!track) return;
+    const slides = track.querySelectorAll('.hc-slide');
+    const dotsWrap = document.getElementById('hcDots');
+    let idx = 0, timer;
+    const msgs = [
+      'Olá! Vi a oferta de FINANCIAMENTO FACILITADO e quero simular.',
+      'Olá! Quero ver os HATCHS e SEDANS econômicos com baixo km.',
+      'Olá! Quero ver os SUVs sem entrada e baixo km.'
+    ];
+    slides.forEach((s,i)=>{
+      s.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msgs[i] || WHATSAPP_MSG);
+      s.addEventListener('click', ()=>{ if(typeof trackConversao === 'function') trackConversao('whatsapp'); });
+      const d = document.createElement('button');
+      d.className = 'hc-dot' + (i===0 ? ' active' : '');
+      d.type = 'button';
+      d.setAttribute('aria-label', 'Ir para oferta ' + (i+1));
+      d.addEventListener('click', ()=>{ go(i); restart(); });
+      dotsWrap.appendChild(d);
+    });
+    const dots = dotsWrap.querySelectorAll('.hc-dot');
+    function go(n){
+      idx = (n + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (idx*100) + '%)';
+      dots.forEach((d,i)=> d.classList.toggle('active', i===idx));
+    }
+    function restart(){ clearInterval(timer); timer = setInterval(()=>go(idx+1), 4500); }
+    const nextBtn = document.getElementById('hcNext');
+    const prevBtn = document.getElementById('hcPrev');
+    if(nextBtn) nextBtn.addEventListener('click', ()=>{ go(idx+1); restart(); });
+    if(prevBtn) prevBtn.addEventListener('click', ()=>{ go(idx-1); restart(); });
+    restart();
+  })();
 
   // odometer count-up genérico
   function animateOdometer(ids, target, duration){
