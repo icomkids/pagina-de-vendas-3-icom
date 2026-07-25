@@ -626,9 +626,9 @@
       <div class="sim-eyebrow">Simulação de exemplo</div>
       <div class="sim-tabs" id="simTabs">
         <button class="sim-tab" data-n="24" type="button">24x</button>
-        <button class="sim-tab active" data-n="36" type="button">36x</button>
+        <button class="sim-tab" data-n="36" type="button">36x</button>
         <button class="sim-tab" data-n="48" type="button">48x</button>
-        <button class="sim-tab" data-n="60" type="button">60x</button>
+        <button class="sim-tab active" data-n="60" type="button">60x</button>
       </div>
       <div class="sim-label">Digite o valor do carro</div>
       <div class="sim-input-wrap">
@@ -636,7 +636,7 @@
         <input type="text" inputmode="numeric" id="simValor" value="32.000" autocomplete="off" aria-label="Valor do carro">
       </div>
       <div class="sim-out">
-        <span class="cur">R$</span><span class="val" id="simParcela">1.100</span><span class="mes"> /mês</span>
+        <span class="cur">R$</span><span class="val" id="simParcela">751</span><span class="mes"> /mês</span>
       </div>
       <p class="sim-sub" id="simSub">carro de R$ 32.000 · simulação sem entrada</p>
       <div class="sim-checks">
@@ -996,7 +996,7 @@
     const subEl = $('simSub');
     const cta = $('simCta');
     const tabs = $('simTabs');
-    let prazo = 36;
+    let prazo = 60;
     const onlyDigits = s => (s||'').replace(/\D/g,'');
     const fmt = n => n.toLocaleString('pt-BR');
 
