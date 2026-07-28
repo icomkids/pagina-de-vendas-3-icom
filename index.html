@@ -675,6 +675,23 @@
       restart();
     })();
 
+    // Captura o GCLID (Google Click ID) e anexa na mensagem do WhatsApp.
+    // Isso permite IMPORTAR depois so os leads REAIS como conversao no
+    // Google Ads (Conversoes offline) — em vez de contar todo clique.
+    (function(){
+      function p(n){ return new URLSearchParams(location.search).get(n); }
+      var g = p('gclid') || p('wbraid') || p('gbraid');
+      try{ if(g){ sessionStorage.setItem('gclid', g); } else { g = sessionStorage.getItem('gclid'); } }catch(e){}
+      if(!g) return;
+      document.addEventListener('click', function(ev){
+        var a = ev.target.closest ? ev.target.closest('a[href*="wa.me"]') : null;
+        if(!a) return;
+        if(a.href.indexOf('%5Bref') === -1){
+          a.href += encodeURIComponent('\n\n[ref: ' + g + ']');
+        }
+      }, true);
+    })();
+
     document.querySelectorAll('[data-cta]').forEach((link) => {
       link.addEventListener('click', () => {
         window.dataLayer = window.dataLayer || [];
