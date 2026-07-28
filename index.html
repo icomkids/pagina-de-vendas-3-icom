@@ -683,10 +683,17 @@
           cta_position: link.dataset.cta,
           phone: '551231996370'
         });
-        if(typeof gtag === 'function'){
-          gtag('event','conversion',{'send_to':'AW-18306162351/Kl2LCKHQuMwcEK-9h5lE','value':1.0,'currency':'BRL','transport_type':'beacon'});
+        // conversao dispara no MAXIMO 1x por sessao (evita contar varios
+        // cliques do mesmo visitante como leads diferentes)
+        var jaContou = false;
+        try{ jaContou = sessionStorage.getItem('conv_lead') === '1'; }catch(e){}
+        if(!jaContou){
+          try{ sessionStorage.setItem('conv_lead','1'); }catch(e){}
+          if(typeof gtag === 'function'){
+            gtag('event','conversion',{'send_to':'AW-18306162351/Kl2LCKHQuMwcEK-9h5lE','value':1.0,'currency':'BRL','transport_type':'beacon'});
+          }
+          if(typeof fbq === 'function'){ fbq('track','Contact'); }
         }
-        if(typeof fbq === 'function'){ fbq('track','Contact'); }
       });
     });
   </script>
