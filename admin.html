@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Painel · Quizzes iCOM Motors</title>
+<style>
+  :root{--bg:#0b1020;--card:#141b2e;--card2:#1b2437;--line:#26314b;--txt:#eef2fb;--mut:#93a0bd;--blue:#5b8cff;--green:#2ecc8f;--amber:#f2b13c;--red:#f2685c}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.4}
+  .wrap{max-width:1080px;margin:0 auto;padding:22px 16px 60px}
+  .login{max-width:360px;margin:14vh auto;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
+  .login h1{font-size:1.25rem;margin-bottom:6px}
+  .login p{color:var(--mut);font-size:.9rem;margin-bottom:18px}
+  input[type=password]{width:100%;padding:13px 14px;border-radius:11px;border:1px solid var(--line);background:var(--card2);color:var(--txt);font-size:1rem;margin-bottom:12px}
+  button{cursor:pointer;border:0;font-weight:700;font-family:inherit}
+  .btn{width:100%;padding:13px;border-radius:11px;background:var(--blue);color:#fff;font-size:1rem}
+  .btn.sec{background:var(--card2);color:var(--txt);border:1px solid var(--line);width:auto;padding:9px 16px;font-size:.86rem}
+  .err{color:var(--red);font-size:.85rem;margin-top:8px;min-height:18px}
+  .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+  .top h1{font-size:1.3rem}
+  .top .sub{color:var(--mut);font-size:.85rem}
+  .grid{display:grid;gap:12px}
+  .kpis{grid-template-columns:repeat(4,1fr)}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .kpi .n{font-size:1.9rem;font-weight:800;line-height:1}
+  .kpi .l{color:var(--mut);font-size:.78rem;margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
+  .kpi .p{font-size:.82rem;margin-top:4px;font-weight:700}
+  .kpi.prem{border-color:rgba(46,204,143,.4)} .kpi.prem .n{color:var(--green)}
+  .kpi.inter{border-color:rgba(242,177,60,.4)} .kpi.inter .n{color:var(--amber)}
+  .kpi.desq{border-color:rgba(242,104,92,.4)} .kpi.desq .n{color:var(--red)}
+  .sect{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:16px}
+  .sect h2{font-size:1rem;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .tag{font-size:.7rem;padding:2px 8px;border-radius:99px;background:var(--card2);color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .qblock{margin-bottom:16px}
+  .qblock .qt{font-size:.82rem;color:var(--mut);margin-bottom:8px;font-weight:700}
+  .bar{display:flex;align-items:center;gap:10px;margin-bottom:7px;font-size:.85rem}
+  .bar .bl{flex:0 0 128px;color:var(--txt)}
+  .bar .bt{flex:1;height:20px;background:var(--card2);border-radius:6px;overflow:hidden;position:relative}
+  .bar .bf{height:100%;background:var(--blue);border-radius:6px}
+  .bar .bn{flex:0 0 54px;text-align:right;color:var(--mut);font-variant-numeric:tabular-nums}
+  table{width:100%;border-collapse:collapse;font-size:.82rem}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+  th{color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem}
+  .pill{font-size:.72rem;padding:2px 9px;border-radius:99px;font-weight:800}
+  .pill.premium{background:rgba(46,204,143,.16);color:var(--green)}
+  .pill.intermediario{background:rgba(242,177,60,.16);color:var(--amber)}
+  .pill.desqualificado{background:rgba(242,104,92,.16);color:var(--red)}
+  .tbl-wrap{overflow-x:auto}
+  .muted{color:var(--mut)}
+  @media(max-width:720px){.kpis{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="login" class="login">
+  <h1>Painel · Quizzes</h1>
+  <p>iCOM Motors — métricas de qualificação de leads.</p>
+  <input type="password" id="pw" placeholder="Senha do painel" autocomplete="current-password">
+  <button class="btn" id="enter">Entrar</button>
+  <div class="err" id="err"></div>
+</div>
+
+<div id="app" class="wrap" style="display:none">
+  <div class="top">
+    <div><h1>Painel · Quizzes iCOM Motors</h1><div class="sub" id="sub"></div></div>
+    <div style="display:flex;gap:8px">
+      <button class="btn sec" id="reload">Atualizar</button>
+      <button class="btn sec" id="logout">Sair</button>
+    </div>
+  </div>
+
+  <div class="grid kpis" id="kpis"></div>
+
+  <div class="sect">
+    <h2>Por página</h2>
+    <div class="grid" id="pages" style="grid-template-columns:repeat(2,1fr);gap:12px"></div>
+  </div>
+
+  <div class="sect">
+    <h2>Distribuição das respostas <span class="tag">simulação</span></h2>
+    <div id="dist-simulacao"></div>
+  </div>
+  <div class="sect">
+    <h2>Distribuição das respostas <span class="tag">avaliação</span></h2>
+    <div id="dist-avaliacao"></div>
+  </div>
+
+  <div class="sect">
+    <h2>Últimos leads</h2>
+    <div class="tbl-wrap"><table id="tbl"><thead><tr><th>Quando</th><th>Página</th><th>Qualificação</th><th>Respostas</th></tr></thead><tbody></tbody></table></div>
+  </div>
+</div>
+
+<script>
+  var SUPA_URL = "https://swsfwthjxtqtkloexyjs.supabase.co";
+  var SUPA_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN3c2Z3dGhqeHRxdGtsb2V4eWpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxNzkxOTMsImV4cCI6MjA5Mzc1NTE5M30.09EL5hjdfzK-THVcnakg1nCSAeDMC99gSNUCumku3_4";
+
+  var LABELS = {
+    valor:{"60-90":"R$ 60–90k","90-120":"R$ 90–120k","mais120":"Acima R$ 120k"},
+    entrada:{"ate10":"Até R$ 10k","10-30":"R$ 10–30k","mais30":"Acima R$ 30k"},
+    parcela:{"ate1500":"Até R$ 1.500","1500-2500":"R$ 1.500–2.500","mais2500":"Acima R$ 2.500"},
+    cpf:{"sim":"Com restrição","nao":"Sem restrição"},
+    ano:{"2018+":"2018+","2015-2017":"2015–2017","pre2015":"Antes de 2015"},
+    km:{"ate50":"Até 50k km","50-100":"50–100k km","mais100":"Acima 100k km"},
+    intencao:{"troca":"Troca","vender":"Só vender"},
+    tipo:{"suv":"SUV Premium","sedan":"Sedan Exec.","hatch":"Hatch Esp.","outro":"Outro"}
+  };
+  var QORDER = { simulacao:["valor","entrada","parcela","cpf"], avaliacao:["ano","km","intencao","tipo"] };
+  var QTITLE = { valor:"Valor buscado", entrada:"Entrada disponível", parcela:"Parcela desejada", cpf:"Restrição no CPF", ano:"Ano do veículo", km:"Quilometragem", intencao:"Intenção", tipo:"Tipo buscado" };
+
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  function pct(n,t){return t?Math.round(n/t*100):0;}
+
+  var el=function(id){return document.getElementById(id);};
+  el("enter").addEventListener("click",go);
+  el("pw").addEventListener("keydown",function(e){if(e.key==="Enter")go();});
+  el("logout").addEventListener("click",function(){location.reload();});
+  el("reload").addEventListener("click",function(){load(el("pw").value);});
+
+  function go(){ load(el("pw").value); }
+
+  function load(pw){
+    el("err").textContent="";
+    if(!pw){el("err").textContent="Digite a senha.";return;}
+    if(SUPA_ANON.indexOf("__SUPA")===0){el("err").textContent="Painel ainda não conectado ao banco (chave anon pendente).";return;}
+    el("enter").textContent="Entrando...";
+    fetch(SUPA_URL+"/rest/v1/rpc/icom_motors_quiz_metrics",{
+      method:"POST",
+      headers:{"Content-Type":"application/json","apikey":SUPA_ANON,"Authorization":"Bearer "+SUPA_ANON},
+      body:JSON.stringify({p_password:pw})
+    }).then(function(r){return r.json();}).then(function(rows){
+      el("enter").textContent="Entrar";
+      if(!Array.isArray(rows)){ el("err").textContent="Erro ao consultar."; return; }
+      if(rows.length===0){ el("err").textContent="Senha incorreta ou ainda sem leads."; return; }
+      render(rows);
+    }).catch(function(){ el("enter").textContent="Entrar"; el("err").textContent="Falha de conexão."; });
+  }
+
+  function bar(label,n,total){
+    return '<div class="bar"><div class="bl">'+esc(label)+'</div><div class="bt"><div class="bf" style="width:'+pct(n,total)+'%"></div></div><div class="bn">'+n+' · '+pct(n,total)+'%</div></div>';
+  }
+
+  function render(rows){
+    rows = rows.filter(function(r){ return r.pagina==="simulacao" || r.pagina==="avaliacao"; });
+    el("login").style.display="none"; el("app").style.display="block";
+    var total=rows.length;
+    var byQ={premium:0,intermediario:0,desqualificado:0};
+    var byPage={};
+    rows.forEach(function(r){
+      byQ[r.qualificacao_final]=(byQ[r.qualificacao_final]||0)+1;
+      byPage[r.pagina]=byPage[r.pagina]||{total:0,premium:0,intermediario:0,desqualificado:0};
+      byPage[r.pagina].total++; byPage[r.pagina][r.qualificacao_final]++;
+    });
+    el("sub").textContent=total+" leads · atualizado agora";
+    el("kpis").innerHTML=
+      '<div class="kpi"><div class="n">'+total+'</div><div class="l">Total de leads</div></div>'+
+      '<div class="kpi prem"><div class="n">'+byQ.premium+'</div><div class="l">Premium</div><div class="p" style="color:var(--green)">'+pct(byQ.premium,total)+'%</div></div>'+
+      '<div class="kpi inter"><div class="n">'+byQ.intermediario+'</div><div class="l">Intermediário</div><div class="p" style="color:var(--amber)">'+pct(byQ.intermediario,total)+'%</div></div>'+
+      '<div class="kpi desq"><div class="n">'+byQ.desqualificado+'</div><div class="l">Desqualificado</div><div class="p" style="color:var(--red)">'+pct(byQ.desqualificado,total)+'%</div></div>';
+
+    el("pages").innerHTML=Object.keys(byPage).sort().map(function(p){
+      var d=byPage[p];
+      return '<div class="kpi"><div class="l" style="margin:0 0 8px">'+esc(p)+'</div>'+
+        '<div class="n" style="font-size:1.4rem">'+d.total+'</div>'+
+        '<div style="margin-top:8px;font-size:.8rem" class="muted">'+
+        '<span class="pill premium">'+d.premium+' prem</span> '+
+        '<span class="pill intermediario">'+d.intermediario+' int</span> '+
+        '<span class="pill desqualificado">'+d.desqualificado+' desq</span></div></div>';
+    }).join("")||'<div class="muted">Sem dados.</div>';
+
+    ["simulacao","avaliacao"].forEach(function(pg){
+      var sub=rows.filter(function(r){return r.pagina===pg;});
+      var html="";
+      QORDER[pg].forEach(function(k){
+        var counts={};
+        sub.forEach(function(r){var v=(r.respostas||{})[k];if(v!=null)counts[v]=(counts[v]||0)+1;});
+        var keys=Object.keys(LABELS[k]);
+        html+='<div class="qblock"><div class="qt">'+esc(QTITLE[k])+'</div>'+
+          keys.map(function(v){return bar(LABELS[k][v]||v,counts[v]||0,sub.length);}).join("")+'</div>';
+      });
+      el("dist-"+pg).innerHTML='<div class="cols"><div>'+html+'</div></div>' ;
+      if(sub.length===0) el("dist-"+pg).innerHTML='<div class="muted">Sem leads desta página ainda.</div>';
+    });
+
+    var tb=el("tbl").querySelector("tbody");
+    tb.innerHTML=rows.slice(0,60).map(function(r){
+      var when=new Date(r.created_at).toLocaleString("pt-BR");
+      var resp=Object.keys(r.respostas||{}).map(function(k){return k+": "+(r.respostas[k]);}).join(" · ");
+      return '<tr><td class="muted">'+esc(when)+'</td><td>'+esc(r.pagina)+'</td><td><span class="pill '+esc(r.qualificacao_final)+'">'+esc(r.qualificacao_final)+'</span></td><td class="muted">'+esc(resp)+'</td></tr>';
+    }).join("");
+  }
+</script>
+</body>
+</html>
