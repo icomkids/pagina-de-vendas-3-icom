@@ -136,15 +136,20 @@
     .check-list li{display:flex;gap:10px;align-items:flex-start;font-size:1rem;line-height:1.3;letter-spacing:-.02em}
     .check{width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:#e5f9ef;color:#18b977;font-weight:950;flex:0 0 auto}
     .sim-cta{margin-top:18px;min-height:54px;font-size:1rem}
-    .sim-note{margin:10px 0 0;color:#7a8493;font-size:.82rem;line-height:1.32;text-align:center}
+    .sim-note{margin:10px 0 0;color:#7a8493;font-size:.78rem;line-height:1.32;text-align:center}
     .qual-field{margin:2px 0 16px}
     .qual-field label{display:block;color:#69707d;font-size:.82rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin:0 0 8px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace}
     .qual-select{width:100%;min-height:52px;background:#f6f9fd;border:1px solid #dfe5ee;border-radius:16px;padding:12px 40px 12px 14px;color:#11141c;font-size:1rem;font-weight:800;font-family:inherit;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235c6573' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
     .qual-select:focus{outline:0;border-color:rgba(29,99,242,.55);box-shadow:0 0 0 4px rgba(29,99,242,.10)}
     .qual-select.invalid{border-color:#e0b400;background-color:#fffdf3}
     .sim-cta.disabled{opacity:.55;filter:grayscale(.15);cursor:not-allowed}
-    .qual-hint{margin:8px 0 0;color:#b98700;font-size:.82rem;text-align:center;font-weight:850;display:none}
-    .qual-hint.show{display:block}
+    .qual-hint{margin:12px 0 0;display:none;align-items:center;justify-content:center;gap:8px;color:#8a5a00;background:#fff6e0;border:1px solid #f0d38a;border-radius:12px;padding:10px 12px;font-size:.86rem;font-weight:850;text-align:center;line-height:1.3}
+    .qual-hint.show{display:flex}
+    .qual-hint svg{width:16px;height:16px;flex-shrink:0}
+    .min-callout{margin:12px 0 0;display:flex;align-items:center;justify-content:center;gap:9px;background:var(--navy);color:#fff;border-radius:12px;padding:11px 14px;font-size:.9rem;font-weight:800;text-align:center;line-height:1.3;box-shadow:0 10px 22px -12px rgba(10,37,64,.7)}
+    .min-callout strong{font-weight:950;white-space:nowrap}
+    .min-callout svg{width:18px;height:18px;flex-shrink:0;opacity:.92}
+    .qual-field .req{display:inline-block;margin-left:6px;color:#8a5a00;background:#fff6e0;border:1px solid #f0d38a;border-radius:999px;padding:1px 8px;font-size:.62rem;letter-spacing:.06em;vertical-align:middle}
 
     .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px auto 0;max-width:860px;text-align:center}
     .stat{background:rgba(255,255,255,.55);border:1px solid rgba(230,235,242,.8);border-radius:18px;padding:14px 10px}
@@ -378,7 +383,7 @@
           </ul>
 
           <div class="qual-field">
-            <label for="downPayment">Pretensão de Entrada</label>
+            <label for="downPayment">Pretensão de Entrada <span class="req">obrigatório</span></label>
             <select id="downPayment" class="qual-select" aria-label="Pretensão de Entrada" required>
               <option value="" disabled selected>Selecione a sua entrada</option>
               <option value="R$ 10.000 a R$ 30.000">R$ 10.000 a R$ 30.000</option>
@@ -390,8 +395,9 @@
           <a id="simulationCta" class="btn green full pulse sim-cta" target="_blank" rel="noopener" data-cta="simulator" href="https://wa.me/551231996370?text=%5BFINANCIAMENTO%5D%20Ol%C3%A1!%20Vim%20pela%20p%C3%A1gina%20de%20financiamento%20da%20iCom%20Motors%20e%20quero%20ver%20os%20seminovos%20dispon%C3%ADveis%20para%20financiar.">
             Clique para mais informações
           </a>
-          <p class="qual-hint" id="qualHint">Selecione a pretensão de entrada para liberar o atendimento.</p>
-          <p class="sim-note">Taxa usada: 1,59% a.m. · valor ilustrativo e sujeito à aprovação. A iCom Motors trabalha com veículos a partir de R$ 60.000.</p>
+          <p class="qual-hint" id="qualHint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>Selecione a pretensão de entrada para liberar o atendimento.</p>
+          <div class="min-callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2v-3.28a1 1 0 0 0-.684-.949l-1.923-.641a1 1 0 0 1-.578-.502l-1.539-3.076A2 2 0 0 0 14.485 7H6.4a2 2 0 0 0-1.79 1.106l-1.32 2.64A2 2 0 0 0 3 12.64V17h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg><span>Atendimento premium para veículos <strong>a partir de R$ 60.000</strong></span></div>
+          <p class="sim-note">Taxa usada: 1,59% a.m. · valor ilustrativo e sujeito à aprovação.</p>
         </aside>
 
         <div class="hero-carousel" aria-label="Ofertas iCom Motors">
