@@ -766,5 +766,77 @@
       });
     });
   </script>
+<style>
+  .quiz-ov{position:fixed;inset:0;z-index:99999;background:rgba(6,12,22,.74);display:none;align-items:center;justify-content:center;padding:16px}
+  .quiz-ov.open{display:flex}
+  .quiz-md{background:#fff;border-radius:20px;max-width:440px;width:100%;padding:26px 22px 22px;box-shadow:0 30px 80px -18px rgba(0,0,0,.55);position:relative;max-height:92vh;overflow:auto;color:#11141c}
+  .quiz-x{position:absolute;top:12px;right:12px;width:34px;height:34px;border:0;background:#f0f3f8;border-radius:50%;color:#5c6573;font-size:22px;line-height:1;cursor:pointer}
+  .quiz-eb{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:800;margin-bottom:10px}
+  .quiz-pg{display:flex;gap:6px;margin-bottom:18px}
+  .quiz-pg i{height:4px;flex:1;border-radius:99px;background:#e3e8ef}
+  .quiz-pg i.on{background:var(--blue)}
+  .quiz-q{font-size:1.22rem;font-weight:800;line-height:1.22;margin-bottom:16px}
+  .quiz-op{display:grid;gap:10px}
+  .quiz-op button{text-align:left;padding:14px 16px;border:1.5px solid #dfe5ee;border-radius:14px;background:#fff;font-size:1rem;font-weight:700;color:#2b3648;cursor:pointer;transition:border-color .15s,background .15s}
+  .quiz-op button:hover{border-color:var(--blue);background:#f5f8ff}
+  .quiz-msg{font-size:1rem;line-height:1.55;color:#3a4658;margin:2px 0 18px}
+  .quiz-cta{width:100%;padding:14px;border:0;border-radius:14px;background:var(--blue);color:#fff;font-size:1rem;font-weight:800;cursor:pointer}
+</style>
+<div class="quiz-ov" id="quizOv" role="dialog" aria-modal="true" aria-label="Qualificacao iCom Motors">
+  <div class="quiz-md">
+    <button class="quiz-x" id="quizX" aria-label="Fechar">&times;</button>
+    <div class="quiz-eb">iCom Motors &middot; financiamento</div>
+    <div class="quiz-pg" id="quizPg"></div>
+    <div id="quizBd"></div>
+  </div>
+</div>
+<script>
+(function(){
+  try{ if(sessionStorage.getItem('quiz_done')==='1') return; }catch(e){}
+  var ov=document.getElementById('quizOv'),bd=document.getElementById('quizBd'),pg=document.getElementById('quizPg'),xb=document.getElementById('quizX');
+  var Q=[
+    {k:'valor',q:'Qual o valor aproximado do veículo que você busca?',o:[['R$ 60.000 a R$ 90.000','60-90'],['R$ 90.000 a R$ 120.000','90-120'],['Acima de R$ 120.000','mais120']]},
+    {k:'entrada',q:'Quanto você tem disponível para dar de entrada?',o:[['Até R$ 10.000','ate10'],['R$ 10.000 a R$ 30.000','10-30'],['Acima de R$ 30.000','mais30']]},
+    {k:'parcela',q:'Qual valor de parcela mensal você gostaria de pagar?',o:[['Até R$ 1.500','ate1500'],['R$ 1.500 a R$ 2.500','1500-2500'],['Acima de R$ 2.500','mais2500']]},
+    {k:'cpf',q:'Você possui restrições no CPF ou histórico de crédito negativo?',o:[['Sim','sim'],['Não','nao']]}
+  ];
+  var a={},s=0;
+  function pgr(){pg.innerHTML=Q.map(function(_,i){return '<i class="'+(i<=s?'on':'')+'"></i>';}).join('');}
+  function step(){
+    if(s>=Q.length){return fin();}
+    var q=Q[s];pgr();
+    bd.innerHTML='<div class="quiz-q">'+q.q+'</div><div class="quiz-op">'+q.o.map(function(o,i){return '<button data-i="'+i+'">'+o[0]+'</button>';}).join('')+'</div>';
+    Array.prototype.forEach.call(bd.querySelectorAll('.quiz-op button'),function(b){b.addEventListener('click',function(){a[q.k]=q.o[+b.dataset.i][1];s++;step();});});
+  }
+  function calc(){
+    var desq=a.valor==='60-90'||a.entrada==='ate10'||a.parcela==='ate1500'||a.cpf==='sim';
+    var prem=!desq&&a.entrada==='mais30'&&a.parcela==='mais2500';
+    return {final:desq?'desqualificado':(prem?'premium':'intermediario'),disq:desq};
+  }
+  function fin(){
+    var r=calc();
+    var resumo='valor: '+a.valor+' | entrada: '+a.entrada+' | parcela: '+a.parcela+' | cpf: '+a.cpf+' | qualificacao_final: '+r.final;
+    try{sessionStorage.setItem('quiz_respostas',JSON.stringify(a));sessionStorage.setItem('qualificacao_final',r.final);sessionStorage.setItem('quiz_wa',resumo);sessionStorage.setItem('quiz_done','1');}catch(e){}
+    try{ if(typeof fbq==='function') fbq('trackCustom','QuizQualificacao',{pagina:'simulacao',qualificacao_final:r.final,valor:a.valor,entrada:a.entrada,parcela:a.parcela,cpf:a.cpf}); }catch(e){}
+    try{ if(typeof gtag==='function') gtag('event','quiz_qualificacao',{pagina:'simulacao',qualificacao_final:r.final}); }catch(e){}
+    if(r.disq){
+      pg.style.display='none';
+      bd.innerHTML='<div class="quiz-q">Agradecemos seu interesse!</div><p class="quiz-msg">No momento, a iCom Motors trabalha com um estoque de veículos selecionados a partir de R$ 60.000 e condições de financiamento específicas para perfis com histórico de crédito sólido. Para uma análise mais detalhada, entre em contato com nossa equipe — mas as condições podem ser limitadas para o seu perfil.</p><button class="quiz-cta" id="quizEnd">Entendi</button>';
+      document.getElementById('quizEnd').addEventListener('click',close);
+    } else { close(); }
+  }
+  function close(){ov.classList.remove('open');}
+  function dismiss(){try{sessionStorage.setItem('quiz_done','1');}catch(e){}close();}
+  xb.addEventListener('click',dismiss);
+  ov.addEventListener('click',function(e){if(e.target===ov)dismiss();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')dismiss();});
+  setTimeout(function(){step();ov.classList.add('open');},2000);
+  document.addEventListener('click',function(ev){
+    var el=ev.target.closest?ev.target.closest('a[href*="wa.me"]'):null;if(!el)return;
+    var wa;try{wa=sessionStorage.getItem('quiz_wa');}catch(e){}
+    if(wa && el.href.indexOf('qualificacao_final')===-1){ el.href+=encodeURIComponent('\n\n[Quiz iCom] '+wa); }
+  });
+})();
+</script>
 </body>
 </html>
