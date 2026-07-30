@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>iCom Motors | Financiamento facilitado e Zero de Entrada</title>
-  <meta name="description" content="Compre seu carro com financiamento facilitado, aprovação rápida, opções sem entrada e atendimento direto pelo WhatsApp na iCom Motors em Taubaté." />
+  <title>iCom Motors | Seminovos Selecionados e Condições Exclusivas de Financiamento</title>
+  <meta name="description" content="Seminovos selecionados com perícia cautelar aprovada e condições exclusivas de financiamento. Atendimento consultivo direto pelo WhatsApp na iCom Motors em Taubaté." />
   <meta name="theme-color" content="#1d63f2" />
 
   <!-- Google tag (gtag.js) -->
@@ -28,6 +28,7 @@
     :root{
       --blue:#1d63f2;
       --blue-2:#0b55e6;
+      --navy:#0A2540;
       --green:#23c77a;
       --whats:#25d366;
       --black:#11141c;
@@ -136,6 +137,14 @@
     .check{width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:#e5f9ef;color:#18b977;font-weight:950;flex:0 0 auto}
     .sim-cta{margin-top:18px;min-height:54px;font-size:1rem}
     .sim-note{margin:10px 0 0;color:#7a8493;font-size:.82rem;line-height:1.32;text-align:center}
+    .qual-field{margin:2px 0 16px}
+    .qual-field label{display:block;color:#69707d;font-size:.82rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin:0 0 8px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace}
+    .qual-select{width:100%;min-height:52px;background:#f6f9fd;border:1px solid #dfe5ee;border-radius:16px;padding:12px 40px 12px 14px;color:#11141c;font-size:1rem;font-weight:800;font-family:inherit;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235c6573' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+    .qual-select:focus{outline:0;border-color:rgba(29,99,242,.55);box-shadow:0 0 0 4px rgba(29,99,242,.10)}
+    .qual-select.invalid{border-color:#e0b400;background-color:#fffdf3}
+    .sim-cta.disabled{opacity:.55;filter:grayscale(.15);cursor:not-allowed}
+    .qual-hint{margin:8px 0 0;color:#b98700;font-size:.82rem;text-align:center;font-weight:850;display:none}
+    .qual-hint.show{display:block}
 
     .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px auto 0;max-width:860px;text-align:center}
     .stat{background:rgba(255,255,255,.55);border:1px solid rgba(230,235,242,.8);border-radius:18px;padding:14px 10px}
@@ -188,10 +197,10 @@
     details[open] summary::after{content:"×"}
     details p{font-size:1rem;color:#667085;line-height:1.42;margin:0 0 18px}
 
-    .final-cta{padding:52px 0;background:linear-gradient(135deg, rgba(29,99,242,.07), rgba(35,199,122,.07));border-bottom:1px solid rgba(230,235,242,.78)}
-    .final-box{background:rgba(255,255,255,.84);border:1px solid var(--line);border-radius:28px;padding:38px 28px;text-align:center;box-shadow:var(--shadow);max-width:820px;margin:auto}
-    .final-box h2{font-size:clamp(2.35rem,5.8vw,4.2rem);line-height:.98;letter-spacing:-.075em;margin-bottom:16px;font-weight:950}
-    .final-box p{font-size:clamp(1.1rem,2.2vw,1.5rem);line-height:1.38;color:#667085;margin:0 auto 24px;max-width:640px}
+    .final-cta{padding:64px 0;background:var(--navy);border-bottom:1px solid var(--navy)}
+    .final-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);border-radius:28px;padding:44px 32px;text-align:center;box-shadow:0 30px 60px -30px rgba(0,0,0,.5);max-width:820px;margin:auto}
+    .final-box h2{font-size:clamp(2.1rem,5.2vw,3.6rem);line-height:1.0;letter-spacing:-.05em;margin-bottom:16px;font-weight:950;color:#fff}
+    .final-box p{font-size:clamp(1.1rem,2.2vw,1.4rem);line-height:1.4;color:rgba(255,255,255,.78);margin:0 auto 26px;max-width:640px}
 
     footer{padding:28px 0 86px;text-align:center;color:#667085;font-size:.95rem;line-height:1.45}
     footer strong{display:block;color:#667085;font-weight:500;font-size:1.02rem;margin-bottom:10px}
@@ -312,7 +321,7 @@
         <span>iCOM MOTORS</span>
       </a>
 
-      <a class="header-whats pulse" target="_blank" rel="noopener" aria-label="Chamar iCom Motors no WhatsApp" href="https://wa.me/551231996370?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20da%20iCom%20Motors%20e%20quero%20simular%20um%20carro%20com%20zero%20de%20entrada.">
+      <a class="header-whats pulse" target="_blank" rel="noopener" aria-label="Chamar iCom Motors no WhatsApp" href="https://wa.me/551231996370?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20da%20iCom%20Motors%20e%20quero%20consultar%20as%20condi%C3%A7%C3%B5es%20de%20financiamento%20dos%20seminovos.">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01Zm-7 15.24h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.24 8.24 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.07-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.68 4.25 3.76.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.22-.16-.47-.28Z" fill="currentColor"/></svg>
       </a>
     </div>
@@ -322,16 +331,16 @@
     <section class="hero">
       <div class="container grid-hero">
         <div>
-          <p class="eyebrow">iCom Motors · financiamento facilitado</p>
-          <h1>Quer Comprar Carro com <span>Zero</span> de Entrada?</h1>
-          <p class="lead">Aprovação rápida, parcelas que cabem no seu bolso e mais de 80 carros revisados pra você escolher agora.</p>
+          <p class="eyebrow">iCom Motors · seminovos selecionados</p>
+          <h1>Seminovos Selecionados com <span>Condições Exclusivas</span> de Financiamento</h1>
+          <p class="lead">Veículos revisados com perícia cautelar aprovada e taxas diferenciadas para perfis de alta pontuação.</p>
 
           <div class="cta-row">
-            <a class="btn pulse" target="_blank" rel="noopener" data-cta="hero" href="https://wa.me/551231996370?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20da%20iCom%20Motors%20e%20quero%20simular%20zero%20de%20entrada.%20Pode%20me%20ajudar%3F">
+            <a class="btn pulse" target="_blank" rel="noopener" data-cta="hero" href="https://wa.me/551231996370?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20da%20iCom%20Motors%20e%20quero%20consultar%20as%20condi%C3%A7%C3%B5es%20de%20financiamento%20dos%20seminovos.%20Pode%20me%20ajudar%3F">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01Zm-7 15.24h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.24 8.24 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.07-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.68 4.25 3.76.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.22-.16-.47-.28Z" fill="currentColor"/></svg>
-              Simular Zero de Entrada no WhatsApp
+              Consultar Condições de Financiamento
             </a>
-            <a class="btn secondary small" target="_blank" rel="noopener" data-cta="score" href="https://wa.me/551231996370?text=Ol%C3%A1%2C%20quero%20conferir%20o%20estoque%20da%20iCom%20Motors%20e%20ver%20op%C3%A7%C3%B5es%20que%20caibam%20no%20meu%20bolso.">Conferir Estoque</a>
+            <a class="btn secondary small" target="_blank" rel="noopener" data-cta="score" href="https://wa.me/551231996370?text=Ol%C3%A1%2C%20quero%20conferir%20o%20estoque%20da%20iCom%20Motors%20e%20ver%20os%20seminovos%20dispon%C3%ADveis%20e%20as%20condi%C3%A7%C3%B5es.">Conferir Estoque</a>
           </div>
           <p class="micro">resposta em poucos minutos</p>
         </div>
@@ -340,7 +349,7 @@
         <aside class="simulation-card" aria-label="Simulação de exemplo">
           <div class="card-top">
             <span class="card-label">Simulação de exemplo</span>
-            <span class="badge">Sem entrada</span>
+            <span class="badge">Taxas exclusivas</span>
           </div>
           <div class="term-grid" role="tablist" aria-label="Escolha o prazo">
             <button class="term" type="button" data-term="24">24x</button>
@@ -352,33 +361,44 @@
           <label class="value-label" for="vehicleValue">Digite o valor do carro</label>
           <div class="money-input">
             <span>R$</span>
-            <input id="vehicleValue" type="tel" inputmode="numeric" value="32.000" autocomplete="off" aria-label="Digite o valor do carro" />
+            <input id="vehicleValue" type="tel" inputmode="numeric" value="95.000" autocomplete="off" aria-label="Digite o valor do carro" />
           </div>
 
           <div class="price" aria-live="polite">
             <span class="currency">R$</span>
-            <span class="amount" id="priceAmount">751</span>
+            <span class="amount" id="priceAmount">2.469</span>
             <span class="per">/mês</span>
           </div>
-          <p class="car-value" id="simDescription">carro de R$ 32.000 · simulação sem entrada</p>
+          <p class="car-value" id="simDescription">carro de R$ 95.000 · simulação de financiamento</p>
           <ul class="check-list">
-            <li><span class="check">✓</span> Sem entrada pra sair de carro novo</li>
-            <li><span class="check">✓</span> Parcela muda conforme o valor digitado</li>
-            <li><span class="check">✓</span> Simulação rápida direto com a equipe</li>
+            <li><span class="check">✓</span> Veículos periciados e com procedência</li>
+            <li><span class="check">✓</span> Taxas diferenciadas para bom pagador</li>
+            <li><span class="check">✓</span> Atendimento consultivo, sem compromisso</li>
           </ul>
+
+          <div class="qual-field">
+            <label for="downPayment">Pretensão de Entrada</label>
+            <select id="downPayment" class="qual-select" aria-label="Pretensão de Entrada" required>
+              <option value="" disabled selected>Selecione a sua entrada</option>
+              <option value="R$ 10.000 a R$ 30.000">R$ 10.000 a R$ 30.000</option>
+              <option value="R$ 30.000 a R$ 50.000">R$ 30.000 a R$ 50.000</option>
+              <option value="Acima de R$ 50.000">Acima de R$ 50.000</option>
+            </select>
+          </div>
 
           <a id="simulationCta" class="btn green full pulse sim-cta" target="_blank" rel="noopener" data-cta="simulator" href="https://wa.me/551231996370?text=Ol%C3%A1%2C%20fiz%20uma%20simula%C3%A7%C3%A3o%20na%20p%C3%A1gina%20da%20iCom%20Motors%20para%20um%20carro%20de%20R%24%2032.000%20em%2036x%2C%20com%20parcela%20aproximada%20de%20R%24%201.100%2Fm%C3%AAs%2C%20sem%20entrada.%20Quero%20mais%20informa%C3%A7%C3%B5es%20e%20op%C3%A7%C3%B5es%20do%20estoque.">
             Clique para mais informações
           </a>
-          <p class="sim-note">Taxa usada: 1,2% a.m. · valor ilustrativo e sujeito à aprovação.</p>
+          <p class="qual-hint" id="qualHint">Selecione a pretensão de entrada para liberar o atendimento.</p>
+          <p class="sim-note">Taxa usada: 1,59% a.m. · valor ilustrativo e sujeito à aprovação. A iCom Motors trabalha com veículos a partir de R$ 60.000.</p>
         </aside>
 
         <div class="hero-carousel" aria-label="Ofertas iCom Motors">
           <div class="hc-viewport">
             <div class="hc-track" id="hcTrack">
-              <a class="hc-slide" id="hcSlide1" href="#" target="_blank" rel="noopener" data-cta="carrossel"><img src="carrossel/1.jpg" alt="Financiamento facilitado" loading="lazy" /></a>
-              <a class="hc-slide" id="hcSlide2" href="#" target="_blank" rel="noopener" data-cta="carrossel"><img src="carrossel/2.jpg" alt="Hatchs e sedans economicos" loading="lazy" /></a>
-              <a class="hc-slide" id="hcSlide3" href="#" target="_blank" rel="noopener" data-cta="carrossel"><img src="carrossel/3.jpg" alt="SUVs sem entrada" loading="lazy" /></a>
+              <a class="hc-slide" id="hcSlide1" href="#" target="_blank" rel="noopener" data-cta="carrossel"><img src="carrossel/1.jpg" alt="Condições exclusivas de financiamento" loading="lazy" /></a>
+              <a class="hc-slide" id="hcSlide2" href="#" target="_blank" rel="noopener" data-cta="carrossel"><img src="carrossel/2.jpg" alt="Seminovos selecionados" loading="lazy" /></a>
+              <a class="hc-slide" id="hcSlide3" href="#" target="_blank" rel="noopener" data-cta="carrossel"><img src="carrossel/3.jpg" alt="SUVs e sedans premium" loading="lazy" /></a>
             </div>
           </div>
           <button class="hc-arrow hc-prev" id="hcPrev" type="button" aria-label="Anterior">&#8249;</button>
@@ -406,7 +426,7 @@
           <article class="info-card">
             <div class="icon-bubble green"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 16.5v-9Zm2.5-.7a.7.7 0 0 0-.7.7v1.1h12.4V7.5a.7.7 0 0 0-.7-.7h-11Zm11.7 5.2H5.8v4.5c0 .39.31.7.7.7h11c.39 0 .7-.31.7-.7V12Z" fill="currentColor"/></svg></div>
             <h3>Financiamento facilitado</h3>
-            <p>Parceria com bancos e financeiras pra buscar aprovação rápida, com plano de parcela que faça sentido no seu bolso.</p>
+            <p>Parceria com bancos e financeiras para taxas diferenciadas e condições que fazem sentido para o seu perfil.</p>
           </article>
 
           <article class="info-card">
@@ -475,7 +495,7 @@
             <div class="step-number">Passo 1</div>
             <div>
               <h3>Chama no WhatsApp</h3>
-              <p>Conta o que você procura: modelo, faixa de preço, parcela ideal ou forma de pagamento.</p>
+              <p>Conta o que você procura: modelo, ano, faixa de investimento ou forma de pagamento.</p>
             </div>
           </div>
           <div class="step">
@@ -495,7 +515,7 @@
         </div>
 
         <div class="cta-row" style="margin-top:48px">
-          <a class="btn green pulse" target="_blank" rel="noopener" data-cta="steps" href="https://wa.me/551231996370?text=Ol%C3%A1%2C%20quero%20receber%20op%C3%A7%C3%B5es%20do%20estoque%20da%20iCom%20Motors%20que%20caibam%20no%20meu%20bolso.">Quero ver carros no meu bolso</a>
+          <a class="btn green pulse" target="_blank" rel="noopener" data-cta="steps" href="https://wa.me/551231996370?text=Ol%C3%A1%2C%20quero%20receber%20as%20op%C3%A7%C3%B5es%20de%20seminovos%20selecionados%20da%20iCom%20Motors.">Quero ver os seminovos disponíveis</a>
         </div>
       </div>
     </section>
@@ -540,8 +560,8 @@
 
         <div class="faq-list">
           <details>
-            <summary>Consigo financiar mesmo com restrição no CPF?</summary>
-            <p>Depende da análise de crédito, score, renda e perfil do financiamento. Chama no WhatsApp que a equipe orienta o melhor caminho sem compromisso.</p>
+            <summary>Quais os critérios para aprovação de taxas exclusivas?</summary>
+            <p>As condições diferenciadas são destinadas a clientes com score alto e histórico de crédito sólido. Chama no WhatsApp que a equipe avalia o seu perfil e apresenta as melhores taxas disponíveis.</p>
           </details>
           <details>
             <summary>Os carros têm garantia de verdade?</summary>
@@ -562,11 +582,11 @@
     <section class="final-cta">
       <div class="container">
         <div class="final-box">
-          <h2>Zero de Entrada Existe.<br>Só Falta Simular o Seu.</h2>
-          <p>Fala com a nossa equipe agora e descubra em quantas vezes cabe no seu bolso.</p>
-          <a class="btn pulse" target="_blank" rel="noopener" data-cta="final" href="https://wa.me/551231996370?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20iCom%20Motors%20e%20quero%20simular%20meu%20carro%20com%20zero%20de%20entrada%20agora.">
+          <h2>Condições Exclusivas Para o Seu Próximo Seminovo.</h2>
+          <p>Fale com a nossa equipe e descubra as taxas diferenciadas disponíveis para o seu perfil.</p>
+          <a class="btn pulse" target="_blank" rel="noopener" data-cta="final" href="https://wa.me/551231996370?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20iCom%20Motors%20e%20quero%20consultar%20as%20condi%C3%A7%C3%B5es%20de%20financiamento%20premium%20agora.">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01Zm-7 15.24h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.24 8.24 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.07-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.68 4.25 3.76.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.22-.16-.47-.28Z" fill="currentColor"/></svg>
-            Simular Zero de Entrada no WhatsApp
+            Consultar Condições de Financiamento
           </a>
         </div>
       </div>
@@ -576,7 +596,7 @@
   <footer>
     <div class="container legal">
       <strong>iCom Motors · Todos os carros com procedência verificada e garantia.</strong>
-      *Valores de parcela são simulações ilustrativas com taxa de referência de 1,2% a.m. O valor final depende da análise de crédito, score, renda, veículo escolhido, aprovação da financeira e condições vigentes no momento da contratação. Zero entrada sujeito à aprovação.
+      *Valores de parcela são simulações ilustrativas com taxa de referência de 1,59% a.m. O valor final depende da análise de crédito, score, renda, veículo escolhido, aprovação da financeira e condições vigentes no momento da contratação. Trabalhamos com veículos a partir de R$ 60.000.
     </div>
   </footer>
 
@@ -585,11 +605,13 @@
   </a>
 
   <script>
-    const monthlyRate = 0.012;
+    const monthlyRate = 0.0159;
     const priceAmount = document.getElementById('priceAmount');
     const vehicleValueInput = document.getElementById('vehicleValue');
     const simDescription = document.getElementById('simDescription');
     const simulationCta = document.getElementById('simulationCta');
+    const downPayment = document.getElementById('downPayment');
+    const qualHint = document.getElementById('qualHint');
 
     function onlyDigits(value){
       return String(value || '').replace(/\D/g, '');
@@ -622,10 +644,19 @@
       const formattedPayment = moneyBR(payment || 0);
 
       priceAmount.textContent = formattedPayment;
-      simDescription.textContent = `carro de R$ ${formattedValue} · simulação sem entrada`;
+      simDescription.textContent = `carro de R$ ${formattedValue} · simulação de financiamento`;
 
-      const message = `Olá, fiz uma simulação na página da iCom Motors para um carro de R$ ${formattedValue} em ${term}x, com parcela aproximada de R$ ${formattedPayment}/mês, sem entrada. Quero mais informações e opções do estoque.`;
+      const entrada = downPayment ? downPayment.value : '';
+      const isPremium = vehicleValue > 90000;
+      const entradaTxt = entrada ? ` Pretensão de entrada: ${entrada}.` : '';
+      const premiumTag = isPremium ? ' [Lead_Premium]' : '';
+      const message = `Olá, fiz uma simulação na página da iCom Motors para um seminovo de R$ ${formattedValue} em ${term}x, com parcela aproximada de R$ ${formattedPayment}/mês.${entradaTxt} Quero consultar as condições de financiamento e as opções do estoque.${premiumTag}`;
       simulationCta.href = `https://wa.me/551231996370?text=${encodeURIComponent(message)}`;
+
+      const ok = !!entrada;
+      simulationCta.classList.toggle('disabled', !ok);
+      simulationCta.setAttribute('aria-disabled', ok ? 'false' : 'true');
+      if(qualHint) qualHint.classList.toggle('show', !ok);
     }
 
     document.querySelectorAll('.term').forEach((button) => {
@@ -642,6 +673,20 @@
       updateSimulation();
     });
 
+    if(downPayment){
+      downPayment.addEventListener('change', () => {
+        downPayment.classList.remove('invalid');
+        updateSimulation();
+      });
+    }
+    simulationCta.addEventListener('click', (ev) => {
+      if(simulationCta.classList.contains('disabled')){
+        ev.preventDefault();
+        if(downPayment){ downPayment.classList.add('invalid'); downPayment.focus(); }
+        if(qualHint) qualHint.classList.add('show');
+      }
+    });
+
     updateSimulation();
 
     // carrossel de ofertas (abaixo da calculadora)
@@ -653,9 +698,9 @@
       let idx = 0, timer;
       const WA = '551231996370';
       const msgs = [
-        'Olá! Vi a oferta de FINANCIAMENTO FACILITADO e quero simular.',
-        'Olá! Quero ver os HATCHS e SEDANS econômicos com baixo km.',
-        'Olá! Quero ver os SUVs sem entrada e baixo km.'
+        'Olá! Vi as CONDIÇÕES EXCLUSIVAS de financiamento e quero consultar.',
+        'Olá! Quero ver os SEMINOVOS SELECIONADOS disponíveis.',
+        'Olá! Quero ver os SUVs e SEDANS premium com baixo km.'
       ];
       slides.forEach((s,i)=>{
         s.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msgs[i] || 'Olá!');
