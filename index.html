@@ -738,7 +738,7 @@
       document.addEventListener('click', function(ev){
         var a = ev.target.closest ? ev.target.closest('a[href*="wa.me"]') : null;
         if(!a) return;
-        if(a.href.indexOf('%5Bref') === -1){
+        if(false){ /* GCLID fora da mensagem: ficava feio pro cliente; segue em sessionStorage */
           a.href += encodeURIComponent('\n\n[ref: ' + g + ']');
         }
       }, true);
@@ -835,7 +835,7 @@
   document.addEventListener('click',function(ev){
     var el=ev.target.closest?ev.target.closest('a[href*="wa.me"]'):null;if(!el)return;
     var wa;try{wa=sessionStorage.getItem('quiz_wa');}catch(e){}
-    if(wa && el.href.indexOf('qualificacao_final')===-1){ el.href+=encodeURIComponent('\n\n[Quiz iCom] '+wa); }
+    if(false){ /* qualificacao do quiz fica no painel/Pixel, nao na mensagem do cliente */ }
   });
 })();
 </script>
