@@ -727,22 +727,7 @@
       restart();
     })();
 
-    // Captura o GCLID (Google Click ID) e anexa na mensagem do WhatsApp.
-    // Isso permite IMPORTAR depois so os leads REAIS como conversao no
-    // Google Ads (Conversoes offline) — em vez de contar todo clique.
-    (function(){
-      function p(n){ return new URLSearchParams(location.search).get(n); }
-      var g = p('gclid') || p('wbraid') || p('gbraid');
-      try{ if(g){ sessionStorage.setItem('gclid', g); } else { g = sessionStorage.getItem('gclid'); } }catch(e){}
-      if(!g) return;
-      document.addEventListener('click', function(ev){
-        var a = ev.target.closest ? ev.target.closest('a[href*="wa.me"]') : null;
-        if(!a) return;
-        if(false){ /* GCLID fora da mensagem: ficava feio pro cliente; segue em sessionStorage */
-          a.href += encodeURIComponent('\n\n[ref: ' + g + ']');
-        }
-      }, true);
-    })();
+    // (rastreamento por GCLID/[ref] removido — mensagem do WhatsApp fica limpa)
 
     document.querySelectorAll('[data-cta]').forEach((link) => {
       link.addEventListener('click', () => {
@@ -832,11 +817,7 @@
   ov.addEventListener('click',function(e){if(e.target===ov)dismiss();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')dismiss();});
   setTimeout(function(){step();ov.classList.add('open');},2000);
-  document.addEventListener('click',function(ev){
-    var el=ev.target.closest?ev.target.closest('a[href*="wa.me"]'):null;if(!el)return;
-    var wa;try{wa=sessionStorage.getItem('quiz_wa');}catch(e){}
-    if(false){ /* qualificacao do quiz fica no painel/Pixel, nao na mensagem do cliente */ }
-  });
+  // (mensagem do WhatsApp limpa — qualificacao do quiz vai pro painel/Pixel)
 })();
 </script>
 </body>
